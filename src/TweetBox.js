@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Avatar, Button } from '@material-ui/core';
 import db from './firebase';
+import firebase from 'firebase';
 import './TweetBox.css';
 
 function TweetBox() {
@@ -11,6 +12,7 @@ function TweetBox() {
         e.preventDefault();
 
         db.collection('posts').add({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             displayName: "Sharjeel",
             username: "sharjeel",
             verified: true,
