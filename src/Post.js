@@ -18,23 +18,23 @@ function Post({
     return (
         <div className="post">
             <div className="post__avatar">
-                <Avatar />
+                <Avatar src={avatar} />
             </div>
             <div className="post__body">
                 <div className="post__header">
                     <div className="post__headerText">
                         <h3>
-                            Sharjeel Yunus{" "}
+                            {displayName}{" "}
                             <span className="post__headerSpecial">
-                                <VerifiedUserIcon className="post__badge" /> @sharjeelyunus
+                                {verified && <VerifiedUserIcon className="post__badge" />} @{username}
                             </span>
                         </h3>
                     </div>
                     <div className="post__headerDescription">
-                        <p>Building a twitter clone with ReactJS</p>
+                        <p>{text}</p>
                     </div>
                 </div>
-                <img src="https://media.giphy.com/media/Yr5hvZXBNw9xLVXsZc/giphy.gif" alt="" />
+                <img src={image} alt="" />
                 <div className="post__footer">
                     <ChatBubbleOutlineIcon fontSize="small" />
                     <RepeatIcon fontSize="small" />
