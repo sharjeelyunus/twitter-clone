@@ -11,8 +11,12 @@ import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import './Sidebar.css';
 import { Button } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 
-function Sidebar() {
+function Sidebar({ name, email, avatar }) {
+    const str = `${email}`;
+    const nameParts = str.split("@");
+    const username = nameParts.length === 2 ? nameParts[0] : null;
     return (
         <div className="sidebar">
             <TwitterIcon className="sidebar__twitterIcon" />
@@ -27,6 +31,14 @@ function Sidebar() {
             <SidebarOption Icon={MoreHorizIcon} text="More" />
 
             <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button>
+
+            <div className="sidebar__profileContainer">
+                <Avatar src={avatar} />
+                <div className="sidebar__profileDetails">
+                    <h3>{name}</h3>
+                    <p>@{username}</p>
+                </div>
+            </div>
         </div>
     )
 }

@@ -14,7 +14,7 @@ function App() {
         <Login />
       ) : (
         <div className="app__body">
-          <Sidebar />
+          <Sidebar name={user.displayName} avatar={user.photoURL} email={user.email} />
           <Feed />
           <Widgets />
         </div>
