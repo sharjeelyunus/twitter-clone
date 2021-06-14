@@ -38,6 +38,8 @@
 .post__body > img {
   border-radius: 20px;
   width: 100%;
+  max-width: 550px;
+  object-fit: contain;
 }
 
 .post__footer {

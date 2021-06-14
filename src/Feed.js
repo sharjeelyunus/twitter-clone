@@ -3,9 +3,11 @@ import TweetBox from './TweetBox';
 import Post from './Post';
 import db from './firebase';
 import FlipMove from 'react-flip-move';
+import { useStateValue } from './StateProvider';
 import './Feed.css';
 
 function Feed() {
+    const [{ user }] = useStateValue();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -20,7 +22,7 @@ function Feed() {
                 <h2>Home</h2>
             </div>
 
-            <TweetBox />
+            <TweetBox name={user.displayName} avatar={user.photoURL} email={user.email} />
             <FlipMove>
                 {posts.map(post => (
                     <Post

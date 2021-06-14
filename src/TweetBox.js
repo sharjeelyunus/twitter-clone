@@ -4,7 +4,10 @@ import db from './firebase';
 import firebase from 'firebase';
 import './TweetBox.css';
 
-function TweetBox() {
+function TweetBox({ name, email, avatar }) {
+    const str = `${email}`;
+    const nameParts = str.split("@");
+    const username = nameParts.length === 2 ? nameParts[0] : null;
     const [tweetMessage, setTweetMessage] = useState('');
     const [tweetImage, setTweetImage] = useState('');
 
@@ -13,12 +16,12 @@ function TweetBox() {
 
         db.collection('posts').add({
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            displayName: "Sharjeel",
-            username: "sharjeel",
+            displayName: name,
+            username: username,
             verified: true,
             text: tweetMessage,
             image: tweetImage,
-            avatar: ""
+            avatar: avatar
         });
 
         setTweetMessage("");
@@ -28,7 +31,7 @@ function TweetBox() {
         <div className="tweetBox">
             <form>
                 <div className="tweetBox__input">
-                    <Avatar />
+                    <Avatar src={avatar} />
                     <input
                         onChange={e => setTweetMessage(e.target.value)}
                         value={tweetMessage}
