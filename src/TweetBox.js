@@ -18,7 +18,7 @@ function TweetBox({ name, email, avatar }) {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             displayName: name,
             username: username,
-            verified: true,
+            verified: false,
             text: tweetMessage,
             image: tweetImage,
             avatar: avatar
